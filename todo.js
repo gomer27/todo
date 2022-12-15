@@ -4,8 +4,8 @@ const todoInput = document.querySelector("#todo");
 const todoList = document.querySelector(".list-group");
 const firstCardBody = document.querySelectorAll(".card-body")[0];
 const secondCardBody = document.querySelectorAll(".card-body")[1];
-const filter = document.querySelectorAll("#filter");
-const clearButton = document.querySelectorAll("#clear-todos");
+const filter = document.querySelector("#filter");
+const clearButton = document.querySelector("#clear-todos");
 
 eventListeners(); //tek yerden tüm fonsiyonları çağırıyoruz
 
@@ -14,6 +14,7 @@ function eventListeners() {
   form.addEventListener("submit", addTodo);
   document.addEventListener("DOMContentLoaded", loadAllTodosToUI);
   secondCardBody.addEventListener("click", deleteTodo);
+  clearButton.addEventListener("click", clearAllTodos);
 }
 
 // e yada event fonksiyonda birşey çagrılırken yazılır.Çağrılmıyorsa e yada event yazmaya gerek yoktur.
@@ -109,4 +110,15 @@ function addTodoToUI(newTodo) {
   //todo liste list itemı ekleme
   todoList.appendChild(listItem);
   todoInput.value = "";
+}
+
+function clearAllTodos(e) {
+  if (confirm("Tümünü silmek istediğinize emin misiniz ?")) {
+    //todoList.innerHTML = ""; daha yavaş işliyor
+    //UI(Arayüzden) todoları temizleme
+    while (todoList.firstChild != null) {
+      todoList.removeChild(todoList.firstElementChild);
+    }
+    localStorage.removeItem("todos");
+  }
 }
