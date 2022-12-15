@@ -35,6 +35,7 @@ function showAlert(type, message) {
   alert.textContent = message;
   firstCardBody.appendChild(alert);
   setTimeout(function () {
+    // verilen saniye kadar çalışan funksiyon ekledim
     alert.remove();
   }, 2000);
 }
