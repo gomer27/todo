@@ -22,11 +22,29 @@ function addTodo(e) {
     showAlert("danger", "Lütfen bir todo giriniz...");
   } else {
     addTodoToUI(newTodo);
+    addTodoToStorage(newTodo);
     showAlert("success", "Todo başarıyla eklendi...");
   }
 
   e.preventDefault();
   // form tekrar sayfaya yönlendirilmesin diye kullanılır
+}
+
+function addTodoToStorage(newTodo) {
+  let todos = getTodosFromStorage();
+  todos.push(newTodo);
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+function getTodosFromStorage() {
+  //Storagedan todoları alma
+  let todos;
+  if (localStorage.getItem("todos") === null) {
+    todos = [];
+  } else {
+    todos = JSON.parse(localStorage.getItem("todos"));
+  }
+  return todos;
 }
 
 function showAlert(type, message) {
