@@ -13,6 +13,7 @@ eventListeners(); //tek yerden tüm fonsiyonları çağırıyoruz
 function eventListeners() {
   form.addEventListener("submit", addTodo);
   document.addEventListener("DOMContentLoaded", loadAllTodosToUI);
+  secondCardBody.addEventListener("click", deleteTodo);
 }
 
 // e yada event fonksiyonda birşey çagrılırken yazılır.Çağrılmıyorsa e yada event yazmaya gerek yoktur.
@@ -29,6 +30,13 @@ function addTodo(e) {
 
   e.preventDefault();
   // form tekrar sayfaya yönlendirilmesin diye kullanılır
+}
+
+function deleteTodo(e) {
+  if (e.target.className === "fa fa-remove") {
+    e.target.parentElement.parentElement.remove();
+    showAlert("success", "Todo başarıyla silindi...");
+  }
 }
 
 function addTodoToStorage(newTodo) {
