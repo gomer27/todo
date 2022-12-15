@@ -13,14 +13,32 @@ eventListeners(); //tek yerden tüm fonsiyonları çağırıyoruz
 function eventListeners() {
   form.addEventListener("submit", addTodo);
 }
+
+// e yada event fonksiyonda birşey çagrılırken yazılır.Çağrılmıyorsa e yada event yazmaya gerek yoktur.
 function addTodo(e) {
   const newTodo = todoInput.value.trim();
-  console.log(newTodo);
-  addTodoToUI(newTodo);
+
+  if (newTodo === "") {
+    showAlert("danger", "Lütfen bir todo giriniz...");
+  } else {
+    addTodoToUI(newTodo);
+    showAlert("success", "Todo başarıyla eklendi...");
+  }
 
   e.preventDefault();
   // form tekrar sayfaya yönlendirilmesin diye kullanılır
 }
+
+function showAlert(type, message) {
+  const alert = document.createElement("div");
+  alert.className = "alert alert-${type}";
+  alert.textContent = message;
+  firstCardBody.appendChild(alert);
+  setTimeout(function () {
+    alert.remove();
+  }, 2000);
+}
+
 function addTodoToUI(newTodo) {
   //string değerini list item olarak UI(arayüze) ekleyecek.
 
@@ -44,5 +62,3 @@ function addTodoToUI(newTodo) {
   todoList.appendChild(listItem);
   todoInput.value = "";
 }
-
-// e yada event fonksiyonda birşey çagrılırken yazılır.Çağrılmıyorsa e yada event yazmaya gerek yoktur.
