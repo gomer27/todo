@@ -15,6 +15,7 @@ function eventListeners() {
   document.addEventListener("DOMContentLoaded", loadAllTodosToUI);
   secondCardBody.addEventListener("click", deleteTodo);
   clearButton.addEventListener("click", clearAllTodos);
+  filter.addEventListener("keyup", filterTodos);
 }
 
 // e yada event fonksiyonda birşey çagrılırken yazılır.Çağrılmıyorsa e yada event yazmaya gerek yoktur.
@@ -121,4 +122,18 @@ function clearAllTodos(e) {
     }
     localStorage.removeItem("todos");
   }
+}
+
+function filterTodos(e) {
+  const filterValue = e.target.value.toLowerCase();
+  const listItems = document.querySelectorAll(".list-group-item");
+  listItems.forEach(function (listItem) {
+    const text = listItem.textContent.toLowerCase();
+    if (text.indexOf(filterValue) === -1) {
+      //Değer bulunmadı
+      listItem.setAttribute("style", "display : none !important");
+    } else {
+      listItem.setAttribute("style", "display : block");
+    }
+  });
 }
