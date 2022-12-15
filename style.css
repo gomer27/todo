@@ -1,0 +1,21 @@
+.text-center {
+  text-align: center;
+}
+.todoButton {
+  width: 100%;
+}
+.deleteIcon {
+  font-size: 20px;
+  padding: 0 8px;
+}
+.penIcon {
+  font-size: 20px;
+  padding: 0 8px;
+}
+.colorIcon {
+  color: red;
+}
+.filterIcon {
+  font-size: 35px;
+  color: green;
+}

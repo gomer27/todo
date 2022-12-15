@@ -99,7 +99,7 @@ function addTodoToUI(newTodo) {
   const link = document.createElement("a");
   link.href = "#";
   link.className = "delete-item";
-  link.innerHTML = "<i class= 'fa fa-remove'></i>";
+  link.innerHTML = "<i class= 'fa fa-remove colorIcon'></i>";
   listItem.className = "list-group-item d-flex justify-content-between";
 
   console.log(listItem);

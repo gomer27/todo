@@ -14,17 +14,26 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+    <!-- Font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./style.css" />
 
     <title>Todo List</title>
   </head>
-  <body>
+  <body style="background-color: beige">
     <div class="container" style="margin-top: 20px">
       <div class="card row">
-        <div class="card-header">Todo List</div>
+        <div class="card-header text-center">Todo List</div>
         <div class="card-body">
           <form id="todo-form" name="form">
             <div class="form-row">
-              <div class="form-group col-md-6">
+              <div class="form-group col-12">
                 <input
                   class="form-control"
                   type="text"
@@ -34,16 +43,20 @@
                 />
               </div>
             </div>
-            <button type="submit" class="btn btn-danger">Todo Ekleyin</button>
+            <div>
+              <button type="submit" class="btn btn-success todoButton">
+                Todo Ekleyin<i class="fa-solid fa-pen penIcon"></i>
+              </button>
+            </div>
           </form>
           <hr />
         </div>
 
         <div class="card-body">
           <hr />
-          <h5 class="card-title" id="tasks-title">Todolar</h5>
+          <h5 class="card-title text-center" id="tasks-title">Todolar</h5>
           <div class="form-row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-11">
               <input
                 class="form-control"
                 type="text"
@@ -51,6 +64,9 @@
                 id="filter"
                 placeholder="Bir Todo Arayın"
               />
+            </div>
+            <div class="col-1">
+              <i class="fa-solid fa-arrow-down-short-wide filterIcon"></i>
             </div>
           </div>
 
@@ -64,9 +80,16 @@
                 </li>-->
           </ul>
           <hr />
-          <a id="clear-todos" class="btn btn-dark" href="#"
-            >Tüm Taskları Temizleyin</a
-          >
+          <div class="d-flex justify-content-between">
+            <a
+              id="clear-todos"
+              class="btn btn-danger text-center todoButton"
+              href="#"
+              >Tüm Taskları Temizleyin<i
+                class="fa-sharp fa-solid fa-trash-can deleteIcon"
+              ></i
+            ></a>
+          </div>
         </div>
       </div>
     </div>
