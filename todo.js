@@ -12,6 +12,7 @@ eventListeners(); //tek yerden tüm fonsiyonları çağırıyoruz
 // Tüm event listenerlar
 function eventListeners() {
   form.addEventListener("submit", addTodo);
+  document.addEventListener("DOMContentLoaded", loadAllTodosToUI);
 }
 
 // e yada event fonksiyonda birşey çagrılırken yazılır.Çağrılmıyorsa e yada event yazmaya gerek yoktur.
@@ -34,6 +35,13 @@ function addTodoToStorage(newTodo) {
   let todos = getTodosFromStorage();
   todos.push(newTodo);
   localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+function loadAllTodosToUI() {
+  let todos = getTodosFromStorage();
+  todos.forEach(function (todo) {
+    addTodoToUI(todo);
+  });
 }
 
 function getTodosFromStorage() {
